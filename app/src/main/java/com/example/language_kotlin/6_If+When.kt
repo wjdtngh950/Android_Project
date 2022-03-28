@@ -38,17 +38,23 @@ fun main() {
         println("b는 10보다 작다")
     }
 
-    dowhen(1)
-    dowhen("suho")
-    dowhen(12L)
-    dowhen(3.123123)
-    dowhen("suho와 뱅샐")
+    dowhen1(1)
+    dowhen1("suho")
+    dowhen1(12L)
+    dowhen1(3.123123)
+    dowhen1("suho와 뱅샐")
+
+    dowhen2(2)
+    dowhen2("bankSalad")
+    dowhen2(12.2)
+    dowhen2(3.123123)
+    dowhen2("뱅샐인턴 suho  ")
 }
 
 //When
 //when은 하나의 변수를 여러개와 비교할 수 있음
 
-fun dowhen (a: Any){ //Any는 최상위 자료형임 아무거나 다쓸 수 있음
+fun dowhen1 (a: Any){ //Any는 최상위 자료형임 아무거나 다쓸 수 있음
     // 조건값
     when(a){
         1 -> println("정수 1입니다") // a가 1이라면? 정수는 1입니다 출력
@@ -58,5 +64,21 @@ fun dowhen (a: Any){ //Any는 최상위 자료형임 아무거나 다쓸 수 있
         else -> println("모르겠다..아무것도 없다...") // 위의 값에 모든게 없다면! else로 귀결됨
     }
 } //만약에 위의 값에 여러개에 부합을 하여도, 가장 처음 부합한 값만 나타냄!
+  //일치하는 값이 없으면 계속 내려가고 결국 하나도 부합하지 않으면 else까지 만나게됨! else가 없다면 출력 없음!
+
+
+  // 조건문으로서 사용하지않고 동작 대신 값을 반환하는 표현식으로도 활용가능함! 위와 같지만 사용범위가 넓음!
+  fun dowhen2 (b: Any){
+      // 조건값
+      var result = when(b){
+          1 -> "정수 1입니다"
+          "suho" -> "나는 수호입니다"
+          is Long -> "이 자료형은 Long 입니다."
+          !is String -> "이 자료형은 String 이 아닙니다."
+          else -> "모르겠다..아무것도 없다..."
+      }
+      println(result)
+  }
+
 
 
